@@ -1,0 +1,6 @@
+django
+celery
+eventlet
+django-celery-results
+gunicorn
+tornado
