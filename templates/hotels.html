@@ -9,7 +9,11 @@
 <table>
     {% for row in hotels %}
      <tr>
-        <td>{{ row.hotelNo|upper }}</td><td>{{ row.name|upper }}</td>
+        <td>
+             <a href="rooms/?hotelno={{ row.id }}"> {{ row.hotelNo|upper }}</a>
+        </td>
+
+         <td>{{ row.name|upper }}</td>
     </tr>
     {% endfor %}
 </table>
