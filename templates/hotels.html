@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotels</title>
+</head>
+<body>
+
+<table>
+    {% for row in hotels %}
+     <tr>
+        <td>{{ row.hotelNo|upper }}</td><td>{{ row.name|upper }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        <a href="?page=1">首页</a>
+
+        {% if hotels.has_previous %}
+            <a href="?page={{ hotels.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ hotels.number }} of {{ hotels.paginator.num_pages }}.
+        </span>
+
+        {% if hotels.has_next %}
+            <a href="?page={{ hotels.next_page_number }}">下一页</a>
+        {% endif %}
+
+        <a href="?page={{ hotels.paginator.num_pages  }}">尾页</a>
+    </span>
+</div>
+
+</body>
+</html>
