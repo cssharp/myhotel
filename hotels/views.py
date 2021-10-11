@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def hotels(request):
-    hotel_list = Hotel.objects.all()
+    hotel_list = Hotel.objects.all().order_by('id')
     paginator = Paginator(hotel_list, 10)  # Show 25 contacts per page
 
     page = request.GET.get('page', 1)
@@ -24,7 +24,7 @@ def hotels(request):
 def rooms(request):
     page = request.GET.get('page', 1)
     hotelno = request.GET.get('hotelno')
-    room_list = Room.objects.filter(hotel=hotelno)
+    room_list = Room.objects.filter(hotel=hotelno).order_by('id')
     paginator = Paginator(room_list, 10)  # Show 25 contacts per page
     try:
         rooms = paginator.page(page)
